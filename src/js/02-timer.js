@@ -6,7 +6,8 @@ const daysClockEl = document.querySelector('[data-days]'),
   hoursClockEl = document.querySelector('[data-hours]'),
   minutesClockEl = document.querySelector('[data-minutes]'),
   secondsClockEl = document.querySelector('[data-seconds]'),
-  btnClockStart = document.querySelector('[data-start]');
+  btnClockStart = document.querySelector('[data-start]'),
+  dataTimePicker = document.querySelector('#datetime-picker')
 
 btnClockStart.disabled = true;
 
@@ -53,6 +54,8 @@ const options = {
   },
 };
 btnClockStart.addEventListener('click', e => {
+  btnClockStart.disabled = true;
+  dataTimePicker.disabled = true;
   setClock(lastDate);
 });
 function convertMs(ms) {

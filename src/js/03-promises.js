@@ -3,7 +3,6 @@ const delayEl = document.querySelector('[name=delay]'),
   amountEl = document.querySelector('[name=amount]'),
   btnSubmitEl = document.querySelector('[type=submit]');
 
-console.log(delayEl);
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {

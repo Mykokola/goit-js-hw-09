@@ -7,7 +7,7 @@ const daysClockEl = document.querySelector('[data-days]'),
   minutesClockEl = document.querySelector('[data-minutes]'),
   secondsClockEl = document.querySelector('[data-seconds]'),
   btnClockStart = document.querySelector('[data-start]'),
-  dataTimePicker = document.querySelector('#datetime-picker')
+  dataTimePicker = document.querySelector('#datetime-picker');
 
 btnClockStart.disabled = true;
 
@@ -15,13 +15,21 @@ function msDateResult(lastDate) {
   const startDateClock = new Date();
   return lastDate.getTime() - startDateClock.getTime();
 }
+function clockCleaner(clock){
+  btnClockStart.disabled = false;
+  dataTimePicker.disabled = false;
+  clearTimeout(clock)
+}
 function setClock(lastDate) {
   timerSetClock = setInterval(() => {
     let dateObg = convertMs(msDateResult(lastDate));
+    if(!dateObg.hours && !dateObg.minutes && !dateObg.seconds && !dateObg.days){
+      clockCleaner(timerSetClock)
+    }
     daysClockEl.textContent =
       dateObg.days.toString().length == 1 ? '0' + dateObg.days : dateObg.days;
-      //це малий код тому вирішив просто додавати нулі чи краще реалізувати зміну елементів обєкту 
-      //Створити функцію яка буде додавати нуль і передавати в неї dateObg.hours і тд
+    //це малий код тому вирішив просто додавати нулі чи краще реалізувати зміну елементів обєкту
+    //Створити функцію яка буде додавати нуль і передавати в неї dateObg.hours і тд
     hoursClockEl.textContent =
       dateObg.hours.toString().length == 1
         ? '0' + dateObg.hours

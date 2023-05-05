@@ -21,7 +21,7 @@ function clockCleaner(clock){
   clearTimeout(clock)
 }
 function setClock(lastDate) {
-  timerSetClock = setInterval(() => {
+ let timerSetClock = setInterval(() => {
     let dateObg = convertMs(msDateResult(lastDate));
     if(!dateObg.hours && !dateObg.minutes && !dateObg.seconds && !dateObg.days){
       clockCleaner(timerSetClock)
